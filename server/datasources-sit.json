@@ -1,0 +1,261 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "TUIHybrisRestDS": {
+    "name": "TUIHybrisRestDS",
+    "connector": "rest",
+    "saurabhbehl":"http://www.fritidsresor.se.tuinordic.com/",
+    "nordicsit":"http://www.fritidsresor.se.tuinordic.com/",
+    "operations": [
+      {
+        "template": {
+          "method": "POST",
+          "url": "http://www.fritidsresor.se.tuinordic.com/view/SearchPanelComponentController/airportRequest",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "fetchAirports": [
+            "postJSON"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "POST",
+          "url": "http://www.fritidsresor.se.tuinordic.com/view/AllDestinationsController/getAllDestinations",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component",
+            "version":3
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "fetchAllDestinations": [
+            "postJSON"
+          ]
+        }
+      },
+       {
+        "template": {
+          "method": "POST",
+          "url": "http://www.fritidsresor.se.tuinordic.com/view/SearchPanelComponentController/getWhereToAutoSuggestData",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "findDestinations": [
+            "postJSON"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "POST",
+          "url": "http://www.fritidsresor.se.tuinordic.com/view/SearchPanelComponentController/getCalendarInfo",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "getCalendarData": [
+            "postJSON"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "POST",
+          "url": "http://www.fritidsresor.se.tuinordic.com/view/SearchPanelComponentController/getPartySizeInfo",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "getSeatsAndRooms": [
+            "postJSON"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "POST",
+          "url": "http://www.fritidsresor.se.tuinordic.com/view/getResultList",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component",
+            "searchInitiator":"search",
+            "viewEdit": "true|cmp_searchpanel_component"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "checkResults": [
+            "postJSON"
+          ]
+        }
+      },
+       {
+        "template": {
+          "method": "GET",
+          "url": "http://www.fritidsresor.se.tuinordic.com/searchResult",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "searchdata":"{searchdata}",
+            "searchInitiator":"search",
+            "viewEdit": "true|cmp_searchpanel_component"
+          }
+        },
+        "functions": {
+          "fetchResults": [
+            "searchdata"
+          ]
+        }
+      }, {
+        "template": {
+          "method": "POST",
+          "url": "http://www.fritidsresor.se.tuinordic.com/view/SearchListViewComponentController/processShowMoreRequest",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_search_listview"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "getChangedResults": [
+            "postJSON"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "POST",
+          "url": "http://www.fritidsresor.se.tuinordic.com/view/SearchListComponentRestControllerTest/getResultListTest",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component",
+            "searchInitiator":"search",
+            "serachPannelcomponentUid":"cmp_search_listview",
+            "viewEdit": "true|cmp_searchpanel_component"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "getResultsData": [
+            "postJSON"
+          ]
+        }
+      },
+            {
+        "template": {
+          "method": "POST",
+          "url": "http://www.fritidsresor.se.tuinordic.com/view/SearchListComponentRestControllerTest/getResultListTest",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component",
+            "searchInitiator":"search",
+            "serachPannelcomponentUid":"cmp_search_listview",
+            "viewEdit": "true|cmp_searchpanel_component"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "getResultsData": [
+            "postJSON"
+          ]
+        }
+      },  {
+        "template": {
+          "method": "POST",
+          "url": "http://www.fritidsresor.se.tuinordic.com/view/SearchListComponentRestControllerTest/filterSearchResults",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component",
+            "searchInitiator":"search",
+            "serachPannelcomponentUid":"cmp_searchpanel_component",
+            "serachListViewcomponentUid":"cmp_search_listview",
+            "viewEdit": "true|cmp_searchpanel_component"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "filterSearchResultsFromHybris": [
+            "postJSON"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://10.203.100.60:8081/JerseyJSONExample/rest/jsonServices/print/{accomodationid}",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+          "getAccomDetails": [
+            "accomodationid"
+          ]
+        }
+      }
+
+    ]
+  }
+}

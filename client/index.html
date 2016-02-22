@@ -1,0 +1,36 @@
+<head>
+<title>Search App Launcher</title>
+<link rel="stylesheet" href="http://assets.t3dev.tuiwebhub.com/media/assets/css/style.css?version=915">
+
+<style type="text/css">
+	
+	.text {
+		width: 200px;
+    display: inline-block;
+    margin-top: 80px
+	}
+	.hidden {
+		display: none;
+	}
+</style>
+</head>
+
+<body>
+  <div class="container">
+   
+   <div class="row panel">
+	   <span class="text"><strong>Search Restful APIs </strong></span>
+	   <span class="display:inline-block;"><button class="btn btn-primary" id="launch" onclick="launch();"> Launch Search </button></span>
+   </div>
+   <div class="row panel hidden">
+	   <span class="text"><strong>PIM Restful API </strong></span>
+	   <span><button class="btn btn-warning" id="p-launch" onclick='window.location.href="search-pim.html"'> Launch PIM</button></span>
+   </div>
+   
+   <script type="text/javascript">
+	   function launch (argument) {
+	   		window.open("/search-holidays.html", "search", "width=380, height=640");
+	   }
+   </script> 
+   </div>
+</body>

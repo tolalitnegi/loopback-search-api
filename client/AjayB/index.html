@@ -1,0 +1,183 @@
+<!doctype html>
+<html ng-app="shopping">
+	<head>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<!-- Specified JS/CSS -->
+		<script src="JS/angular.js"></script>
+		<script src="JS/app.js"></script>
+		<script src="JS/controllers.js"></script>
+		<script src="JS/services.js"></script>
+		<!-- <script src="JS/filters.js"></script>
+		<script src="JS/directives.js"></script> -->
+		
+		<link href="CSS/reset.css" rel="stylesheet">
+		<link href="CSS/shoppingbag.css" rel="stylesheet">
+		<link href="CSS/modal.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="wrapper" ng-controller="shoppingBag">
+			<header>
+				<div class="txtleft pageheading">
+					<h1>{{pageheading |uppercase}}</h1>
+				</div>
+				<div class="txtright cartindicator">
+					<div>{{numberofItems}} {{"items" |uppercase}}</div>
+				</div>
+			</header>
+			<main>
+				<section class="listofitems">
+					<section ng-repeat="product in cartProducts track by $index | limitTo:1">
+					<!-- <section> -->
+						<div class="itemContainer">
+							<div class="product">
+								<div class="previewImg">
+									<img src="Images/T3.jpg" alt="{{}}" />
+								</div>
+								<div class="prod_details">
+									<div class="prodName">
+										{{product.p_name |uppercase}}
+									</div>
+									<div class="prodStyle lighttxt">
+										<span class="prod_props">style #: </span>{{product.p_style |uppercase}}
+									</div>
+									<div class="prodColor lighttxt">
+										<span class="prod_props">colour: </span>{{product.p_selected_color.name}}
+									</div>
+									<div class="prodSize lighttxt">
+										<span class="prod_props">size: </span>{{product.p_selected_size.code |uppercase}}
+									</div>
+									<div class="prodQty">
+										QTY: <span class="qtybox">{{product.p_quantity}}</span>
+									</div>
+									<div class="prodPrice">
+										<span class="originalPrice" ng-hide="{{product.p_originalprice == product.p_price}}">
+											<span class="dollarsign">{{product.c_currency}}</span> <span class="price">{{product.p_originalprice |number:2}}</span>
+										</span>
+										<span class="availprice">
+											<span class="dollarsign">{{product.c_currency}}</span> <span class="price">{{product.p_price |number:2}}</span>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="actionItems">
+								<div class="edit uppercase" ng-click='toggleModal(product)'>edit</div>
+								<div class="remove uppercase"><span>x</span> remove</div>
+								<div class="save uppercase">save for later</div>
+							</div>
+						</div>
+					</section>
+				</section>
+				<section class="promocode">
+					<div class="promoheader uppercase">
+						enter promocode or gift card
+					</div>
+					<div class="promobox">
+						<input id="promotextbox" type="text" ng-model="couponCode"/>
+						<span class="uppercase applybtn" ng-click="applycoupon()">
+							apply
+						</span>
+					</div>
+				</section>
+				<section class="priceShipping">
+					<div class="subtotal unitblock">
+						<div class="heading uppercase">
+							subtotal
+						</div>
+						<div class="content">
+							<span class="dollarsign">$</span><span class="amount">{{subtotal}}.00</span>
+						</div>
+					</div>
+					<div class="esc unitblock">
+						<div class="heading">
+							<div class="uppercase">
+								estimated shipping<sup>*</sup>
+							</div>
+							
+						</div>
+						<div class="content uppercase" ng-show="(subtotal > 50)">
+							<span class="free">free</span>
+						</div>
+						<div class="content uppercase" ng-show="!(subtotal > 50)">
+							<span class="dollarsign">$</span><span class="amount">5.00</span>
+						</div>
+						<div class="freetext" ng-show="(subtotal > 50)">
+							You spent <span class="dollarsign">$</span><span class="amount">50</span>, so you qualify for free shipping<sup>*</sup>
+						</div>
+					</div>
+					<div class="promoApplied unitblock" ng-show = "couponApplied">
+						<div class="heading uppercase">
+							promotion code <span id="appliedpromocode">{{_couponCode}}</span> applied
+						</div>
+						<div class="content">
+							-<span class="dollarsign">$</span><span class="amount">{{couponVal}}.00</span>
+						</div>
+					</div>
+					<div class="divider"></div>
+					<div class="subtotal unitblock">
+						<div class="heading">
+							<div class="uppercase">estimated total</div>
+							
+						</div>
+						<div class="content">
+							<span class="dollarsign">$</span><span class="amount">{{total}}.00</span>
+						</div>
+						<div class="freetext">Tax will be applied during checkout</div>
+					</div>
+				</section>
+				<section class="checkout">
+					<div class="checkoutbtn uppercase" ng-click="checkout()"> 
+						checkout
+					</div>
+					<div class="continueshop uppercase">
+						continue shopping
+					</div>
+					<div class="assurancemsg">
+						Secure checkout. Shopping is always Safe and Secure.
+					</div>
+					<div class="key">
+						<img src="Images/lock.jpg" alt="secure" />
+					</div>
+				</section>
+				<section class="signinNote">
+					<div>
+						<span class="uppercase">sign in</span> to save your cart and 
+						have access to your items on mobile, tablet and desktop.
+					</div>
+				</section>
+				
+				<modal-dialog show='modalShown' width='750px' height='90%'>
+				  <div id="overlay">
+					<div class="image">
+						<img src="Images/T3.jpg"/>
+					</div>
+					<div class="p_name">
+						{{prod_name |uppercase}}
+					</div>
+					<div class="p_price">
+						<span class="dollarsign">$</span><span class="amount">{{subtotal}}.00</span>
+					</div>
+					<div class="p_colors">
+						<span ng-repeat="color in colors" class="colorbox" style="background-color:{{color.hexcode}}">
+						</span>
+					</div>
+					<div class="dropdowns">
+						<!-- <select id="size">
+							<option ng-repeat="size in sizes">{{size.code}}</option>
+						</select>
+						<select id="qty" ng-options="qty for qty in qtys">
+						
+						</select> -->
+					</div>
+					<div class="">
+					
+					</div>
+				  </div>
+				</modal-dialog>
+				
+			</main>
+			<!-- <footer>
+			
+			</footer> -->
+		</div>
+	</body>
+</html>

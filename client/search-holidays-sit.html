@@ -1,0 +1,1111 @@
+<!doctype html>
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+    <title>Sök resa</title>
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="msapplication-tap-highlight" content="no"/>
+     <link rel="stylesheet" href="/assets/css/style.css?version=42"/>
+    <link rel="stylesheet" href="/assets/css/result-page-main.css?version=42"/>
+    <link rel="shortcut icon" href="//assets.tuinordic.com.tuinordic.com/media/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="//assets.tuinordic.com.tuinordic.com/media/assets/img/favicon.ico" type="image/x-icon">
+    <meta name="application-name" content="Fritidsresor">
+
+   <style type="text/css">
+      .search-panel-wrapper .panel, .search-panel-wrapper{
+        background:  #00004d;
+      }
+      .search-panel-wrapper .panel.search-result-panel .scroll-panel{
+        background: #fff;
+      }
+      .tab-carousel .fade-left, .tab-carousel .fade-right{
+         background:  none;
+
+      }
+      .dropdown-panel .flyout-loading {
+          background: url(../img/icons/loader-32x32.gif?1454574231) 50% center no-repeat #00004d!important;
+      }
+      .airport-item.disabled .custom-label, .airport-item.disabled .airport-code{
+            color: #ccc;
+      } 
+     
+
+   
+      @media (max-width: 767px) {
+         .editable-search .search-panel, .editable-search .search-panel-wrapper {
+            display:block;
+         }
+         #list-search{
+            display: none;
+         }
+      }
+   </style>
+  </head>
+  <body data-rating-text="F"
+    data-currencyseparator="&nbsp"
+    data-currency=":-" data-max-rating="5"
+    class="results editable-search common-ux search-core-page">
+    <section class="page-content">
+      <div class="hero hidden" data-bgimageurl="http://static.tuinordic.com.tuinordic.com/media/sys_master/h0f/hc1/9189187846174/1440x810-hitta-din-resa.jpg" style="min-height: 810px;    position: absolute;  width: 100%; background-repeat:no-repeat" >
+      </div>
+      <!-- Add class package, hotel or flight to the search-panel-wrapper to show the active tab on page load -->
+      <script type="text/javascript">
+        window.forExampleJSON = [];
+      </script>
+      <script type="text/javascript"></script>
+      <!-- Only Version 3 Search Panel will remoev the version-3 cssclass later on -->
+      <section id="search-panel" class="search-panel-wrapper  version-3 white package  hidden " data-panel-name="destination">
+        <div class="container">
+          <div class="search-panel-row-container">
+            <div class="search-panel">
+              <a href="javascript:void(0)" class="search-panel-trigger">
+              <i class="icon-search"></i>
+              <em class="placeholder">Sök resa</em>
+              <i class="icon-chevron"></i>
+              </a>
+              <div id="panelWrapper" data-labels='{"List": "Alla resmål"}'>
+                <div class="tabs-col">
+                  <div id="search-panel-tabs" class="text-center tab-carousel" data-searchpagepath="/hitta-din-resa">
+                    <nav class="tab-nav">
+                      <ul class="tab-nav-list">
+                        <li class="tab">
+                          <button type="button" class="tab-btn " data-href="http://www.fritidsresor.se/boka-resa/?type=COMBINATION"
+                            data-allow-redirection="true"
+                            data-tabName="combination">Kombinationsresa</button>
+                        </li>
+                        <li class="tab">
+                          <button class="tab-btn active" href="#"
+                            data-tabName="package"
+                            data-airportOrder="left"
+                            data-destination-order="right">Paketresor</button>
+                        </li>
+                        <li class="tab">
+                          <button type="button" class="tab-btn " data-href="http://www.fritidsresor.se/boka-resa/?type=CHARTER_FLT"
+                            data-allow-redirection="true"
+                            data-tabName="flight"
+                            data-airportOrder="left"
+                            data-destination-order="right">Endast flyg</button>
+                        </li>
+                      </ul>
+                    </nav>
+                    <span class="fade-left show"></span>
+                    <span class="fade-right show"></span>
+                  </div>
+                </div>
+                <form action="/searchResult/" method="GET" data-actionpackage="/searchResult/" data-actionflight="/flightonlyresult/">
+                  <div class="row form-row">
+                    <div class="col-sm-8 col-md-4 search-container search-field-group">
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-6 field-airport search-field">
+                          <span class="field-label-container">
+                            <div class="icon-wrapper">
+                              <i class="icon-aircraft-up"></i>
+                            </div>
+                            <label title="Från" >Från</label>
+                          </span>
+                          <a id="airport" data-placeholder="Välj avreseort" data-default-airport=""
+                            data-service="/api/TUIRestSearch/getDepartureAirports" class="selected-tags" data-panel="where" href="javascript:void(0)">
+                          <span class="placeholder-text">Välj avreseort</span>
+                          </a>
+                          <div class="panel-wrapper">
+                            <div id="searchWhere" class="dropdown-panel search-where"
+                              data-panel-name="where" data-labels='{ "anyAirport" : "Alla flygplatser", "selected": "val just nu","airports":"flygplatser", "airport":"flygplats"}'>
+                              <div class="panel">
+                                <div class="flyout-header container">
+                                  <span class="right">
+                                  <a class="btn-done" href="#"><i class="icon-x"></i></a>
+                                  </span>
+                                  <span class="left">
+                                    <div class="icon-wrapper"><i class="icon-aircraft-up"></i></div>
+                                    <label>Från</label>
+                                  </span>
+                                </div>
+                                <div class= "airports-flyout">
+                                  <div class="container">
+                                    <div class=" row check-all">
+                                      <div class="col-xs-12 col-md-4">
+                                        <ul>
+                                          <li >
+                                            <input id="selectAll-airports"  type="checkbox" class="select-all-selected custom-checkbox"  >
+                                            <label for="selectAll-airports" class="custom-label select-all-label">
+                                            Välj alla avreseorter
+                                            <span class="icon-close-circle remove-airport"></span>
+                                            </label>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="airport-list-wrapper group container"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 field-search search-field new-destination-field"
+                          data-recentsearch='Dina tidigare sökningar'
+                          data-forexample='Till exempel'>
+                          <div class="search-inner-wrapper">
+                            <span class="field-label-container">
+                              <div class="icon-wrapper">
+                                <i class="icon-location"></i>
+                              </div>
+                              <label for="searchPanel-field-search" class="autosuggest-label" title="Till">Till</label>
+                            </span>
+                            <a href="javascript:void(0)" class="selected-tags" id="field-destination-picker" data-panel="destination" name="field-destination-picker" data-placeholder='Alla resmål'>
+                            <span class="placeholder-text">Alla resmål</span>
+                            </a>
+                          </div>
+                          <div class="panel-wrapper">
+                            <div id="searchDestinationRedesign"
+                              class="dropdown-panel search-destination destination"
+                              data-panel-name="destination" style="z-index: 699;"  data-labels='{"selectAllLabel":"Hela","selectedLabel":"val just nu"}'>
+                              <div class="panel" data-role="tabWrapper">
+                                <div class="flyout-header container">
+                                  <span class="right">
+                                  <a class="btn-done" href="#"><i class="icon-x"></i></a>
+                                  </span>
+                                  <span class="left">
+                                    <div class="icon-wrapper"><i class="icon-location"></i></div>
+                                    <label>Till</label>
+                                  </span>
+                                </div>
+                                <div class="search-wrapper container">
+                                  <div class="search-field-group left"
+                                    data-recentsearch='Dina tidigare sökningar'
+                                    data-forexample='Till exempel'>
+                                    <div id="searchDestinationsRedesign" data-disabledestservice="/view/SearchPanelComponentController/validateDestination?componentUid=cmp_searchpanel_component" class="input search-destinations empty focus">
+                                      <ul class="tagHolder" id="tagHolder">
+                                        <li class="tag-wrapper">
+                                          <div class="tag-scroll">
+                                            <ul class="tags"></ul>
+                                          </div>
+                                        </li>
+                                        <li class="field-wrapper autosuggest-input-wrapper">
+                                          <input type="text" placeholder="Alla resmål"
+                                            id="searchPanel-field-search-redesign" class="search-destination-field autogrow" contenteditable="true"
+                                            data-threshold=3
+                                            data-service="/api/TUIRestSearch/getDestinations"
+                                            data-chosenSearchTerm= '{"value":"one"}' autocomplete='off' autocorrect="off"
+                                            data-nomatchmsg='Tyvärr, kunde inte hitta exakt matchning för:'
+                                            autocapitalize="off"
+                                            data-addmorelabel="+ Add" data-morelabel="">
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                  <div id="searchResultFlyoutRedesign" class=" dropdown-panel search-search" data-panel-name="search" data-labels='{"done": "Stäng"}' data-totalRecentsAndForExamples = 3>
+                                    <div class="autosuggest-spinner hidden"></div>
+                                    <div class="panel search-result-panel">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="clearfix">
+                                </div>
+                                <div class="country-container container" 
+                                  data-countryservice="/api/TUIRestSearch/getAllDestination" data-destinationservice="/api/TUIRestSearch/getAllDestination" 
+                                  data-resortservice="/api/TUIRestSearch/getAllDestination">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 field-airport-to search-field">
+                          <span class="field-label-container">
+                            <div class="icon-wrapper">
+                              <i class="icon-aircraft-down"></i>
+                            </div>
+                            <label>Resmål</label>
+                          </span>
+                          <a id="airport-to" data-placeholder="Resmål" data-default-airport=""
+                            data-service="/api/TUIRestSearch/getDepartureAirports" class="selected-tags" data-panel="airport-to" href="javascript:void(0)">
+                          <span class="placeholder-text">Resmål</span>
+                          </a>
+                          <div class="panel-wrapper">
+                            <div id="searchWhereTo" class="dropdown-panel search-where airport-to"
+                              data-panel-name="airport-to" data-labels='{ "anyAirport" : "Alla flygplatser", "selected": "val just nu","airports":"flygplatser", "airport":"flygplats"}'>
+                              <div class="panel">
+                                <div class="flyout-header container">
+                                  <span class="right">
+                                  <a class="btn-done" href="#"><i class="icon-x"></i></a>
+                                  </span>
+                                  <span class="left">
+                                    <div class="icon-wrapper"><i class="icon-aircraft-down"></i></div>
+                                    <label>Destination Airports</label>
+                                  </span>
+                                </div>
+                                <div class="airports-flyout">
+                                  <div class="container">
+                                    <div class=" row check-all">
+                                      <div class="col-xs-12 col-md-4">
+                                        <ul>
+                                          <li >
+                                            <input id="selectAll-airports-to"  type="checkbox" class="select-all-selected custom-checkbox"  >
+                                            <label for="selectAll-airports-to" class="custom-label select-all-label">
+                                            Välj alla avreseorter
+                                            <span class="icon-close-circle remove-airport"></span>
+                                            </label>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="airport-list-wrapper group container "></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 col-md-2 field-duration search-field">
+                      <span class="field-label-container">
+                        <div class="icon-wrapper">
+                          <i class="icon-clock"></i>
+                        </div>
+                        <label class="title" for="search-when-duration"  title="Reslängd">Reslängd</label>
+                      </span>
+                      <a href="javascript:void(0)"  id="field-duration" data-panel="field-duration" name="field-duration"  data-service="/api/TUIRestSearch/getDurations" class="selected-tags" data-placeholder="Reslängd">
+                      <span class="placeholder-text">Reslängd</span>
+                      </a>
+                      <div class="panel-wrapper">
+                        <div id="search-duration-flyout" class="nordic dropdown-panel" data-panel-name="field-duration" data-labels='{"emptyDurationMessage":"Tyvärr har vi inte den valda reslängden tillgänglig. Vänligen ändra dina andra sökkriterier"}'>
+                          <div class="panel" >
+                            <div class="flyout-header container">
+                              <span class="right">
+                              <a class="btn-done" href="#"><i class="icon-x"></i></a>
+                              </span>
+                              <span class="left">
+                                <div class="icon-wrapper">
+                                  <i class="icon-clock"></i>
+                                </div>
+                                <label>Välj din reslängd</label>
+                                <!--label class="duration-sub-text">duration sub text</label-->
+                              </span>
+                            </div>
+                            <div class="scrollable-panel">
+                              <div class="duration-list-container container">
+                                <ul id="duration-list">
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 col-md-3 field-when search-field">
+                      <span class="field-label-container">
+                        <div class="icon-wrapper">
+                          <i class="icon-calendar"></i>
+                        </div>
+                        <label for="when" title="Avresa">Avresa</label> 
+                      </span>
+                      <a id="when" data-placeholder="Välj datum" 
+                        class="selected-tags" data-panel="when" href="javascript:void(0)" 
+                        data-service="/api/TUIRestSearch/getDepartureDates"
+                        data-daterefreshservice="/view/SearchPanelComponentController/getFirstAvailableDate?componentUid=cmp_searchpanel_component"  >
+                      <span class="placeholder-text">Välj datum</span>
+                      </a>
+                      <div class="panel-wrapper">
+                        <div id="searchWhen" class="nordic dropdown-panel search-when" data-panel-name="when"
+                          data-labels='{"flexible":"Flexibel",   "week": "vecka", "weeks": "veckor", "day": "dagar", "days": "dagar", "within": "Jag skulle vilja resa för","travelMessage":"från", "monthLabels":["jan","febr","mars","april","maj","juni","juli","aug","sept","okt","nov","dec"], "dayNamesShort":["sön","mån","tis","ons","tors","fre","lör"], "dayNames": ["söndag" , "måndag" , "tisdag", "onsdag", "torsdag", "fredag", "lördag"], "emptyCalendarMessage":"Tyvärr har vi inga avresedatum som matchar din sökning. Vänligen ändra antalet resenärer, avreseort eller resmål" }' >
+                          <div class="panel"   data-disableDateLabels='{"toolTipLabels": [{"mainMessage": "Vi har inga resor till # från flygplatsen du valt. Här är förslag på andra avreseorter. Här är datum du kan välja." , "phone": "Vi har inga resor till <destination> från flygplatsen du valt. Här är förslag på andra avreseorter. Här är datum du kan välja.", "dateTime": "Vi har inga resor till <destination> från flygplatsen du valt. Här är förslag på andra avreseorter. Här är datum du kan välja.", "prevDate": "Vi har inga resor till <destination> från flygplatsen du valt. Här är förslag på andra avreseorter. Här är datum du kan välja.","nextDate": "Vi har inga resor till <destination> från flygplatsen du valt. Här är förslag på andra avreseorter. Här är datum du kan välja."}]}'>
+                            <div class="flyout-header clearfix container">
+                              <span class="right">
+                              <a class="btn-done" href="javascript:void(0)"><i class="icon-x"></i></a>
+                              </span>
+                              <span class="left">
+                                <div class="icon-wrapper">
+                                  <i class="icon-calendar"></i>
+                                </div>
+                                <label>När vill du resa?</label>
+                                <a id="clear-calendar" href="javascript:void(0)" class="hidden" title="&nbsp;"><span>&nbsp;</span></a>
+                              </span>
+                            </div>
+                            <div class="scrollable-panel">
+                              <div class="group container">
+                                <div id="search-when-datepicker"></div>
+                              </div>
+                              <div class="row-border-top lg-only container">
+                                <div class="row">
+                                  <div class="col-md-12 txt-center">
+                                    <label for="flexible-by" class="flexible-by">
+                                      Hur flexibel är din avresedag?
+                                      <x>
+                                    </label>
+                                    <ul name="flexible-by"  id="flexible-by" class="list-btn-group flexibility-list">
+                                      <li data-value="0"><span> Helt exakt</span></li>
+                                      <li class="selected"  data-value="3 DAYS"><span class="active"> +/- 3 dagar</span></li>
+                                      <li data-value="7 DAYS"><span> +/- 7 dagar</span></li>
+                                      <li data-value="14 DAYS"><span> +/- 14 dagar</span></li>
+                                      <li data-value="1 MONTHS"><span> +/- 1 månad</span></li>
+                                      <li data-value="3 MONTHS"><span> +/- 3 månader</span></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2 mobile-only search-field field-flexible">
+                      <span class="field-label-container">
+                        <div class="icon-wrapper">
+                          <i class="icon-notes"></i>
+                        </div>
+                        <label for="flexible-by" title="Hur flexibel är din avresedag?">Hur flexibel är din avresedag?</label>
+                      </span>
+                      <a href="javascript:void(0)"  id="field-flexibility" data-panel="field-flexibility" name="flexible-by" class="selected-tags" data-placeholder="Flexibilitet">
+                      <span class="placeholder-text">Flexibilitet</span>
+                      </a>
+                      <div class="panel-wrapper">
+                        <div id="search-flexibility-flyout" class="nordic dropdown-panel" data-panel-name="field-flexibility" >
+                          <div class="panel" >
+                            <div class="flyout-header">
+                              <span class="right">
+                              <a class="btn-done" href="#"><i class="icon-x"></i></a>
+                              </span>
+                              <span class="left">
+                                <div class="icon-wrapper">
+                                  <i class="icon-notes"></i>
+                                </div>
+                                <label>Hur flexibel är din avresedag?</label>
+                              </span>
+                            </div>
+                            <div class="scrollable-panel">
+                              <div class="flexibilty-list-container">
+                                <ul id="flexibilty-list" class="flexibility-list">
+                                  <li data-value="0"><span> Helt exakt</span></li>
+                                  <li class="selected"  data-value="3 DAYS"><span class="active">Flexibel +/- 3 dagar</span></li>
+                                  <li data-value="7 DAYS"><span>Flexibel +/- 7 dagar</span></li>
+                                  <li data-value="14 DAYS"><span>Flexibel +/- 14 dagar</span></li>
+                                  <li data-value="1 MONTHS"><span>Flexibel +/- 1 månad</span></li>
+                                  <li data-value="3 MONTHS"><span>Flexibel +/- 3 månader</span></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 col-md-2 field-who search-field">
+                      <span class="field-label-container">
+                        <div class="icon-wrapper">
+                          <i class="icon-people-friends"></i>
+                        </div>
+                        <label>Resenärer</label>
+                      </span>
+                      <a id="who" data-placeholder="2 Vuxna 0 Barn" 
+                        data-service="/api/TUIRestSearch/getSeatsAndRoomsData" class="selected-tags" data-panel="who" href="javascript:void(0)">
+                      <span class="placeholder-text">2 Vuxna 0 Barn </span>
+                      </a>
+                      <div class="panel-wrapper">
+                        <div id="searchWho" class="dropdown-panel search-who"
+                          data-maxadultlimit="6" data-maxchildrenlimit="5"
+                          data-maxtravellerlimit="6" data-panel-name="who"
+                          data-defaultsize='{"rooms":[{"id":"room-1","adults":"2","children":"0","childAgeList":[]}] }'
+                          data-labels='{"room":"Rum", "adult":"Vuxna", "child":"Barn","childAge":"Barn 0-17 år","rooms":"Rum", "adults":"Vuxna", "children":"Barn","room1":"Rum/lägenhet 1","room2":"Rum/lägenhet 2","room3":"Rum/lägenhet 3" ,"ageMessage":"Barnets ålder på hemkomstdagen"   }'>
+                          <div class="panel">
+                            <div class="flyout-header container">
+                              <span class="right">
+                              <a class="btn-done" href="#"><i class="icon-x"></i></a>
+                              </span>
+                              <span class="left">
+                                <div class="icon-wrapper">
+                                  <i class="icon-people-friends"></i>
+                                </div>
+                                <label>Välj antal personer per rum/lägenhet</label>
+                              </span>
+                            </div>
+                            <div class="who-panel container  ">
+                              <div class="scrollable-panel ">
+                                <ul class="member-list"
+                                  data-infantadulterror="Av flygsäkerhetsskäl får antalet barn 0–2 år inte överstiga antalet vuxna"
+                                  data-childErrorMsg="Av flygsäkerhetsskäl får antalet barn 0–2 år inte överstiga antalet vuxna"
+                                  data-maxchildrenerrormsg="You can't carry more than 5 kids with you"
+                                  data-adulterrormsg="You cant select more than 6 adults or passengers"
+                                  data-maxtravellererrormsg="Du kan boka max 6 personer i samma rum/lägenhet" 
+                                  data-maxseatlimitmsg="Du kan boka max 6 platser. Kontakta Kundservice om du vill oka större sällskap"
+                                  data-noageerrmsg="Vänligen ange barnets ålder">
+                                  <li>
+                                    <div class="choose-rooms">
+                                      <div class="rooms-content who" data-partyjmaxson='{"maxAdult":6,"maxKids":5,"kidsAgeArray":["-","< 2","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"]}'>
+                                        <!-- Room Data  -->
+                                        <div class="room row" id="room-1">
+                                        </div>
+                                        <div class="room row" id="room-2">
+                                        </div>
+                                        <div class="room row" id="room-3">
+                                        </div>
+                                      </div>
+                                      <!-- Room Data -->
+                                    </div>
+                                  </li>
+                                </ul>
+                                <div class="addroom-container">
+                                  <a href="#" data-target="1" class="add-room"><i class="icon-plus"></i>Lägg till rum/lägenhet </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 col-md-1 search-field txt-right">
+                      <span>
+                        <div class="icon-wrapper"><i></i></div>
+                        <label>&nbsp;</label>
+                      </span>
+                      <input id="searchNowBtn" data-default-label="Search now" data-results-label="results"
+                        type="submit" class="btn btn-primary search-now-btn"
+                        value="Sök"
+                        data-panel="searchNowBtn" data-resultservice = "/api/TUIRestSearch/getResults" data-service="/api/TUIRestSearch/checkResultsAvaliablity?checkRes=true" data-getresultservicex ="/api/TUIRestSearch/getSearchResults">
+                      <div class="panel-wrapper">
+                        <div id="searchSubmit" class="dropdown-panel search-submit no-records-panel" data-panel-name="searchNowBtn">
+                          <div class="panel">
+                            <div class="flyout-header container">
+                              <span class="right">
+                              <a class="btn-done" href="#"><i class="icon-x"></i></a>
+                              </span>
+                              <span class="left">
+                                <div class="icon-wrapper">
+                                  <i class="icon-bubble-important hidden"></i>
+                                </div>
+                                <label for="searchSubmit"></label>
+                              </span>
+                            </div>
+                            <div class="search-btn-panel container">
+                              <div class="message-header">  </div>
+                              <ul class="alternatives ">
+                                <li class="alternate-date hidden">
+                                  <span>Första lediga utresa är den </span> <a href="/" class="btn btn-primary redirect-link"> </a>
+                                </li>
+                                <li class="alternate-duration hidden">
+                                  <span>Vi har aven resor for </span>
+                                  <a href="/"  class="btn btn-primary redirect-link">
+                                  <span class="duration-number"></span>
+                                  dagar
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <input type="hidden" name="searchdata" id="searchdata" value="" /> <input
+                    type="hidden" name="viewEdit" id="viewEdit" value="true|cmp_searchpanel_component" />
+                </form>
+              </div>
+            </div>
+          </div>
+          <a class="btn-done icon-close-panel" href="#"><i class="icon-x"></i></a>
+        </div>
+        <div id="desktop-panel-wrapper">
+        </div>
+      </section>
+      <a id="mobile-search-initializer" class="btn btn-primary mobile-only version-3">Sök pris och boka resa</a>
+      <div id="result-page-wrapper" class="container results-panel-container " data-ng-controller="ResultController" data-fallbackhotelimage="http://static.tuinordic.com.tuinordic.com/media/sys_master/h37/h2e/9143126294558/312x208-fallback-image-hotelcard-search.jpg">
+        <div class="panel results-panel listView hidden readonly-search" id="results">
+          <div id="view-option">
+            <div class="row">
+              <div class="col-md-12 result-message result-y-facets-y" data-ng-if="searchMetaData.count && !showUnspecifiedUpfront">
+                <h3>
+                  Vi hittade
+                  <span>{{searchMetaData.count}}</span>
+                  alternativ
+                </h3>
+              </div>
+              <div class="col-md-12 result-message result-n-facets-y" style="position: static;" data-ng-if="searchMetaData.count==0 && facets.length!=0">
+                <h3>
+                  Vi hittade
+                  <span> {{searchMetaData.count}}</span>
+                  alternativ
+                </h3>
+              </div>
+              <div class="col-md-12 result-message result-n-facets-n" style="position: static;" data-ng-if="searchMetaData.count==0 && facets.length==0">
+                <div class="search-panel-tabs mobile no-results-mobile-search-initiator">
+                  <ul class="list-view-tabs search-tab">
+                    <li id="list-search" data-tab="search-panel">
+                      <div class="icon-wrapper">
+                        <i class="icon-search"></i>
+                        <span>Sök</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="message-container">
+                  <h2><strong>Vi hittade tyv&aumlrr inte exakt det du s&oumlkte</strong></h2>
+                  <p>Prova att &aumlndra dina s&oumlkkriterier (resm&aringl, hotell, avreseort, avresedatum, resl&aumlngd eller antal rum). Du &aumlr ocks&aring v&aumllkommen att ringa kundservice p&aring 0771-84 01 00 s&aring hj&aumllper vi dig.</p>
+                  <p>&nbsp
+                </div>
+              </div>
+              <div class="col-md-12 search-panel-tabs mobile" data-ng-if="results.hotels">
+                <ul class="list-view-tabs search-tab">
+                  <li id="list-search" data-tab="search-panel">
+                    <div class="icon-wrapper">
+                      <i class="icon-search"></i> <span>Sök</span>
+                    </div>
+                  </li>
+                  <li id="list-filter" data-filter="filter" data-tab="resultFilters">
+                    <div class="icon-wrapper">
+                      <i class="icon-filter"></i>   <span data-filter="filter">Filter</span>
+                    </div>
+                  </li>
+                </ul>
+                <ul class="list-view-tabs sort-by-tab">
+                  <li id="list-sort" data-tab="sort-list">
+                    <div class="tabs-text">
+                      <div class="icon-wrapper">
+                        <i class="icon-sort"></i>
+                        <span>Sortera efter</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <div class="sort-dropdown" id="sort-list">
+                  <ul>
+                    <li data-value="commPriority_ASCENDING_INTEGER">Rekommenderade hotell</li>
+                    <li data-value="accommodationName_ASCENDING_ALPHA">Bokstavsordning (A - Ö)</li>
+                    <li data-value="discountPrice_ASCENDING_FLOAT">Pris – lägst till högst</li>
+                    <li data-value="discountPrice_DESCENDING_FLOAT">Pris – högst till lägst</li>
+                    <li data-value="accommodationRating_ASCENDING_FLOAT">Klassificering – lägst till högst</li>
+                    <li data-value="accommodationRating_DESCENDING_FLOAT">Klassificering – högst till lägst</li>
+                    <li data-value="customerRating_DESCENDING_FLOAT">Kundbetyg – högst till lägst</li>
+                    <li data-value="customerRating_ASCENDING_FLOAT">Kundbetyg – lägst till högst</li>
+                    <li data-value="accommodationName_DESCENDING_ALPHA">Bokstavsordning (Ö - A)</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-12 view-controls" id="view-controls" data-ng-if="results.hotels">
+                <ul class="icon-view-switch filter-switch">
+                  <li><a href="#"><i class="icon-filter"></i><span>Filter</span></a></li>
+                </ul>
+                <div class="pull-right">
+                  <ul class="filter-tabs" data-ng-if="showPriceToggle()">
+                    <li id="open-list-filter" ><i class="icon-filter"></i>Filter</li>
+                  </ul>
+                  <span class="styled-select">
+                    <select id="cb-sort-results" class="cb-sort-results"
+                      data-post='{"componentUid":"cmp_search_listview"}'
+                      data-service="/api/TUIRestSearch/sortResults" autocomplete="off">
+                      <option value="sort_by" class="sort-option">
+                        Sortera efter
+                      </option>
+                      <option
+                        value="commPriority_ASCENDING_INTEGER">Rekommenderade hotell</option>
+                      <option
+                        value="accommodationName_ASCENDING_ALPHA">Bokstavsordning (A - Ö)</option>
+                      <option
+                        value="discountPrice_ASCENDING_FLOAT">Pris – lägst till högst</option>
+                      <option
+                        value="discountPrice_DESCENDING_FLOAT">Pris – högst till lägst</option>
+                      <option
+                        value="accommodationRating_ASCENDING_FLOAT">Klassificering – lägst till högst</option>
+                      <option
+                        value="accommodationRating_DESCENDING_FLOAT">Klassificering – högst till lägst</option>
+                      <option
+                        value="customerRating_DESCENDING_FLOAT">Kundbetyg – högst till lägst</option>
+                      <option
+                        value="customerRating_ASCENDING_FLOAT">Kundbetyg – lägst till högst</option>
+                      <option
+                        value="accommodationName_DESCENDING_ALPHA">Bokstavsordning (Ö - A)</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row filters-lists-wrapper">
+            <div id="resultFilters" class="col-xs-11 col-sm-6 col-md-3 result-filters">
+              <div class="txt-right">
+                <a class="btn-done" href="javascript:void(0)">Stäng
+                <i class="icon-arrow-up"></i>
+                </a>
+              </div>
+              <aside>
+                <div id="left-search" data-service="/api/TUIRestSearch/filterSearchResults" data-postdata='{"componentId":"cmp-facet-filter-001", "pageId":"search-result"}'  data-pricestep="50" >
+                  <ul>
+                    <li data-ng-if="favFacets && favFacets.position==1" data-ng-attr-id="{{favFacets.id}}" class="top-facet-group selected-filters fav-facet-list" data-max="{{favFacets.maxToShow}}" >
+                      <h3 ng-if="favFacets.items.length">{{favFacets.label}}  <i data-ng-class='{"icon-arrow-down":favFacets.expanded, "icon-arrow-right":!favFacets.expanded}'></i> </h3>
+                      <div ng-if="favFacets.items.length" class="filter-block"  data-ng-show="favFacets.expanded">
+                        <ul>
+                          <li data-ng-repeat="item in favFacets.items">
+                            <input type="checkbox" data-ng-click="checkboxChange($event, item)" data-ng-disabled="item.disabled" name="{{item.id}}" data-ng-attr-id="{{item.id}}" data-gid="{{favFacets.id}}"   data-ng-checked="item.selected">
+                            <label for="{{item.id}}" class="facet-name" title="{{item.label}}">{{item.label}}</label>
+                            <i data-ng-attr-id="selected-{{item.id}}" data-gid="{{item.groupId}}" data-ng-click="removeFavourite($event, item)" class="icon-close-circle"></i>
+                          </li>
+                        </ul>
+                        <div class="show-more-less-fav" ng-if="favFacets.allItems.length > favFacets.maxToShow" >
+                          <a class="link-icon-wrapper" data-ng-click="favShowMoreLess(favFacets)">   
+                          <em data-ng-if="favFacets.showMore">Visa mer</em>
+                          <em data-ng-if="favFacets.showLess">Visa mindre</em>
+                          <i data-ng-class="{'icon-arrow-down':favFacets.showMore, 'icon-arrow-up':favFacets.showLess}"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </li>
+                    <li data-ng-if="selectedfilters" data-ng-attr-id="{{selectedfilters.id}}" class="top-facet-group selected-filters">
+                      <h3>{{selectedfilters.label}}  <i data-ng-class='{"icon-arrow-down":selectedfilters.expanded, "icon-arrow-right":!selectedfilters.expanded}'></i> </h3>
+                      <div class="filter-block"  data-ng-show="selectedfilters.expanded">
+                        <ul>
+                          <li data-ng-repeat="item in selectedfilters.items">
+                            <strong class="facet-name" title="{{item.label}}">{{item.label}}</strong>
+                            <i data-ng-attr-id="selected-{{item.id}}" data-gid="{{item.groupId}}" data-ng-click="removeSelected($event, item)" class="icon-close-circle"></i>
+                          </li>
+                        </ul>
+                        <!-- Start Reset Filter-->
+                        <div class="reset-filters" data-ng-if="selectedfilters.showResetFilter">
+                          <span data-ng-click="resetFilters($event)">{{selectedfilters.resetFilterLabel}}</span>
+                          <em data-ng-click="resetFilters($event)" class="icon-close-circle"></em>
+                        </div>
+                        <!-- End Reset Filter-->
+                      </div>
+                    </li>
+                    <li data-ng-if="favFacets && favFacets.position==2" data-ng-attr-id="{{favFacets.id}}" class="top-facet-group selected-filters fav-facet-list" data-max="{{favFacets.maxToShow}}" >
+                      <h3 ng-if="favFacets.items.length">{{favFacets.label}}  <i data-ng-class='{"icon-arrow-down":favFacets.expanded, "icon-arrow-right":!favFacets.expanded}'></i> </h3>
+                      <div ng-if="favFacets.items.length" class="filter-block"  data-ng-show="favFacets.expanded">
+                        <ul>
+                          <li data-ng-repeat="item in favFacets.items">
+                            <input type="checkbox" data-ng-click="checkboxChange($event, item)" data-ng-disabled="item.disabled" name="{{item.id}}" data-ng-attr-id="{{item.id}}" data-gid="{{favFacets.id}}"   data-ng-checked="item.selected">
+                            <label for="{{item.id}}" class="facet-name" title="{{item.label}}">{{item.label}}</label>
+                            <i data-ng-attr-id="selected-{{item.id}}" data-gid="{{item.groupId}}" data-ng-click="removeFavourite($event, item)" class="icon-close-circle"></i>
+                          </li>
+                        </ul>
+                        <div class="show-more-less-fav" ng-if="favFacets.allItems.length > favFacets.maxToShow" >
+                          <a class="link-icon-wrapper" data-ng-click="favShowMoreLess(favFacets)">   
+                          <em data-ng-if="favFacets.showMore">Visa mer</em>
+                          <em data-ng-if="favFacets.showLess">Visa mindre</em>
+                          <i data-ng-class="{'icon-arrow-down':favFacets.showMore, 'icon-arrow-up':favFacets.showLess}"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </li>
+                    <li data-ng-repeat="facet in facets" data-ng-class="isLastfacet($last)" >
+                      <div    data-ng-attr-id="{{facet.id}}" data-ng-if="facet.id=='FC0001'">
+                        <h3 class="facet-group">{{facet.label}} <i data-ng-class='{"icon-arrow-down":facet.isExpanded, "icon-arrow-right":!facet.isExpanded}'></i></h3>
+                        <div data-ng-if="facet.filterType=='multi-checkbox'" class="filter-block" data-ng-show="facet.isExpanded">
+                          <ul class="checkbox-list">
+                            <li data-ng-repeat="item in facet.items" data-ng-class="{'disabled': item.disabled, 'hidden':$index >= facetShowMore && !facet.showList}">
+                              <input type="checkbox" data-ng-click="checkboxChange($event, item)" data-ng-disabled="item.disabled" name="{{item.id}}" data-ng-attr-id="{{item.id}}" data-gid="{{facet.id}}" value="{{'item.value'}}"  data-ng-checked="item.selected">
+                              <label for="{{item.id}}">{{item.label}}</label>
+                              <i data-ng-if="(item.selected && item.disabled) || item.count">({{item.count}})</i>
+                            </li>
+                            <div class="show-more-less-facet" data-ng-if="facet.items.length > facetShowMore" >
+                              <a class="link-icon-wrapper" data-ng-click="filterShowMoreLess(facet)">
+                              <em data-ng-if="!facet.showList">Visa mer</em>
+                              <em data-ng-if="facet.showList">Visa mindre</em>
+                              </a>
+                            </div>
+                          </ul>
+                        </div>
+                      </div>
+                      <div    id="guest-rating" data-ng-if="facet.id=='CR0001'">
+                        <h3 class="facet-group">{{facet.label}} <i data-ng-class='{"icon-arrow-down":facet.isExpanded, "icon-arrow-right":!facet.isExpanded}'></i></h3>
+                        <div data-ng-if="facet.filterType=='guest-rating-slider'" class="filter-block rating-container guest" data-ng-show="facet.isExpanded">
+                          <div class="guestratingele" data-sliderid="guest-ratingele"  data-rangeSettings='{ "groupId":"{{facet.id}}" , "facetType":"{{facet.facetType}}" , "filterType":"{{facet.filterType}}" , "min":{{facet.min}}, "max": {{facet.max}}, "values":[{{facet.start}},{{facet.allowedRangeMax}}], "range":true}'   data-allowedrange='{"min":"{{facet.allowedRangeMin}}","max":"{{facet.allowedRangeMax}}"}'>
+                            <div  id="guest-rating-wrapper" >
+                              <em class="at-least">Minst</em>
+                              <div id="guest-rating-top" >
+                                {{facet.start}}
+                              </div>
+                            </div>
+                            <div id="guest-ratingele" class="range-slider rating" data-rangeSettings='{"min":{{facet.min}}, "max": {{facet.max}}, "values":[{{facet.start}},{{facet.allowedRangeMax}}], "range":true}'  data-allowedrange='{"min":"{{facet.allowedRangeMin}}","max":"{{facet.allowedRangeMax}}"}'></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div  data-ng-attr-id="{{facet.id}}" class="start-date-slider-wrapper" data-ng-if="facet.id=='STARTDATE'">
+                        <h3 class="facet-group">{{facet.label}} <i data-ng-class='{"icon-arrow-down":facet.isExpanded, "icon-arrow-right":!facet.isExpanded}'></i></h3>
+                        <div data-ng-if="facet.filterType=='start-date-slider'" class="filter-block rating-container guest" data-ng-show="facet.isExpanded">
+                          <div class="startdateslider" data-sliderid="start-date-slider"
+                            data-sliderid="start-date-slider" 
+                            data-rangeSettings='{ "groupId":"{{facet.id}}" , "facetType":"{{facet.facetType}}" ,"filterType":"{{facet.filterType}}" ,"min":{{facet.min}}, "values":[{{facet.start}},{{facet.end}}], "max": {{facet.max}}, "range":"true"}'   
+                            data-datesettings='{"startDate":"{{facet.dates.startDate}}","endDate":"{{facet.dates.endDate}}","firstDate":"{{facet.dates.firstDate}}" ,"flexibility":"{{facet.dates.flexibility}}"}' 
+                            data-labels='{"months":["jan","febr","mars","april","maj","juni","juli","aug","sept","okt","nov","dec"],"days":["sön","mån","tis","ons","tors","fre","lör"]}'>
+                            <div id="dates-selected" >
+                              <div class="multi-date hidden">
+                                <em class="from"></em> - <em class="till"></em>
+                              </div>
+                              <div class="single-date hidden">
+                              </div>
+                            </div>
+                            <div id="start-date-slider" class="range-slider"  
+                              data-datesettings='{"startDate":"{{facet.dates.startDate}}","endDate":"{{facet.dates.endDate}}","firstDate":"{{facet.dates.firstDate}}" ,"flexibility":"{{facet.dates.flexibility}}"}' 
+                              data-labels='{"months":["jan","febr","mars","april","maj","juni","juli","aug","sept","okt","nov","dec"],"days":["sön","mån","tis","ons","tors","fre","lör"]}'>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div    id="hotel-rating" data-ng-if="facet.id=='HR0001'">
+                        <h3 class="facet-group">{{facet.label}} <i data-ng-class='{"icon-arrow-down":facet.isExpanded, "icon-arrow-right":!facet.isExpanded}'></i></h3>
+                        <div data-ng-if="facet.filterType=='hotel-rating-slider'" class="filter-block rating-container hotel" data-ng-show="facet.isExpanded">
+                          <div class="hotelratingele" data-sliderid="hotel-ratingele" data-rangeSettings='{ "groupId":"{{facet.id}}" ,  "facetType":"{{facet.facetType}}" ,"filterType":"{{facet.filterType}}" ,"min":{{facet.min}}, "max": {{facet.max}}, "values":[{{facet.start}},{{facet.allowedRangeMax}}], "range":true}' data-hotelrating="{{facet.start}}"  data-allowedrange='{"min":"{{facet.allowedRangeMin}}","max":"{{facet.allowedRangeMax}}"}'>
+                            <div  id="hotel-rating-wrapper" >
+                              <em class="at-least">Minst</em>
+                              <div id="hotel-rating-top" class="hotelratingcount" data-hotelrating="{{facet.start}}">
+                                {{facet.start}}
+                              </div>
+                            </div>
+                            <div id="hotel-ratingele" class="range-slider rating" data-rangeSettings='{"min":{{facet.min}}, "max": {{facet.max}}, "values":[{{facet.start}},{{facet.allowedRangeMax}}], "range":true}'  data-allowedrange='{"min":"{{facet.allowedRangeMin}}","max":"{{facet.allowedRangeMax}}"}'></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="priceSliderBlock" data-ng-if="facet.filterType=='price-slider'" data-ng-show='searchMetaData.showPriceType=="pp"'  data-ng-attr-id="PRICEPERPERSON">
+                        <h3 class="facet-group" data-ng-init="facetIsExpanded = facet.isExpanded" data-ng-click="facetIsExpanded = !facetIsExpanded">{{facet.label}} <i data-ng-class='{"icon-arrow-down":facet.isExpanded, "icon-arrow-right":!facet.isExpanded}'></i></h3>
+                        <div class="clearfix pricebuttons" data-ng-show="facetIsExpanded">
+                          <ul class="price-type-toggle list-view-tabs person price-type-tab" data-ng-if="showPriceToggle()" >
+                            <li data-ptype="totalPrice" data-ng-class='{"active": searchMetaData.showPriceType=="tp", "inactive":searchMetaData.showPriceType!="tp"}' data-ng-click="priceToggle($event)">
+                              <div class="icon-wrapper">
+                                <i class="icon-family"></i> <span>Totalpris</span>
+                              </div>
+                            </li>
+                            <li data-ptype="ppPrice" data-ng-class='{"active": searchMetaData.showPriceType=="pp" , "inactive":searchMetaData.showPriceType!="pp"}' data-ng-click="priceToggle($event)">
+                              <div class="icon-wrapper">
+                                <i class="icon-person"></i> <span>Pris/person</span>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                        <div data-ng-if="facet.filterType=='price-slider'"  class="filter-block rating-container budget" data-ng-show="facet.isExpanded" >
+                          <div class="budgetfilter" data-sliderid="budget-price" data-rangeSettings='{ "groupId":"{{facet.id}}" , "facetType":"{{facet.facetType}}" ,"filterType":"{{facet.filterType}}" ,"value":{{facet.end}}, "min":{{facet.min}}, "max": {{facet.max}}, "range":"min"}'>
+                            <div id="budget-price" class="range-slider"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="priceSliderBlock" data-ng-if="facet.filterType=='price-slider-total'" data-ng-show='searchMetaData.showPriceType=="tp"' data-ng-attr-id="PRICETOTAL">
+                        <h3 class="facet-group" data-ng-init="facetIsExpanded=facet.isExpanded" data-ng-click="facetIsExpanded = !facetIsExpanded">{{facet.label}} <i data-ng-class='{"icon-arrow-down":facet.isExpanded, "icon-arrow-right":!facet.isExpanded}'></i></h3>
+                        <div class="clearfix pricebuttons" data-ng-show="facetIsExpanded">
+                          <ul class="price-type-toggle list-view-tabs person price-type-tab" data-ng-if="showPriceToggle()" >
+                            <li data-ptype="totalPrice" data-ng-class='{"active": searchMetaData.showPriceType=="tp", "inactive":searchMetaData.showPriceType!="tp"}' data-ng-click="priceToggle($event)">
+                              <div class="icon-wrapper">
+                                <i class="icon-family"></i> <span>Totalpris</span>
+                              </div>
+                            </li>
+                            <li data-ptype="ppPrice" data-ng-class='{"active": searchMetaData.showPriceType=="pp" , "inactive":searchMetaData.showPriceType!="pp"}' data-ng-click="priceToggle($event)">
+                              <div class="icon-wrapper">
+                                <i class="icon-person"></i> <span>Pris/person</span>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                        <div data-ng-if="facet.filterType=='price-slider-total'" class="filter-block rating-container budget" data-ng-show="facet.isExpanded">
+                          <div class="budgetfilter" data-sliderid="budget-price-total" data-rangeSettings='{"groupId":"{{facet.id}}" , "facetType":"{{facet.facetType}}" ,"filterType":"{{facet.filterType}}" ,"value":{{facet.end}}, "min":{{facet.min}}, "max": {{facet.max}}, "range":"min"}'>
+                            <div id="budget-price-total" class="range-slider"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div    data-ng-attr-id="{{facet.id}}" data-ng-if="facet.id=='brand'">
+                        <h3 class="facet-group">{{facet.label}} <i data-ng-class='{"icon-arrow-down":facet.isExpanded, "icon-arrow-right":!facet.isExpanded}'></i></h3>
+                        <div data-ng-if="facet.filterType=='multi-checkbox'" class="filter-block" data-ng-show="facet.isExpanded">
+                          <ul class="checkbox-list">
+                            <li data-ng-repeat="item in facet.items" data-ng-class="{'disabled': item.disabled, 'hidden':$index >= facetShowMore && !facet.showList}">
+                              <input type="checkbox" data-ng-click="checkboxChange($event, item)" data-ng-disabled="item.disabled" name="{{item.id}}" data-ng-attr-id="{{item.id}}" data-gid="{{facet.id}}" value="{{'item.value'}}"  data-ng-checked="item.selected">
+                              <label for="{{item.id}}">{{item.label}}</label>
+                              <i data-ng-if="(item.selected && item.disabled) || item.count">({{item.count}})</i>
+                            </li>
+                            <div class="show-more-less-facet" data-ng-if="facet.items.length > facetShowMore" >
+                              <a class="link-icon-wrapper" data-ng-click="filterShowMoreLess(facet)">
+                              <em data-ng-if="!facet.showList">Visa mer</em>
+                              <em data-ng-if="facet.showList">Visa mindre</em>
+                              </a>
+                            </div>
+                          </ul>
+                        </div>
+                      </div>
+                      <div    data-ng-attr-id="{{facet.id}}" data-ng-if="facet.id=='LOCATIONS'">
+                        <h3 class="facet-group">{{facet.label}} <i data-ng-class='{"icon-arrow-down":facet.isExpanded, "icon-arrow-right":!facet.isExpanded}'></i></h3>
+                        <div data-ng-if="facet.filterType=='multi-level-checkbox'" class="filter-block" data-ng-show="facet.isExpanded">
+                          <ul class="checkbox-list">
+                            <li data-ng-repeat="item in facet.items" data-ng-class="{'disabled': item.disabled}">
+                              <input class="parent-cb" type="checkbox" data-ng-click="checkboxMultiLevelChange($event, this, true, item)" data-ng-disabled="item.disabled" name="{{item.id}}" data-ng-attr-id="{{item.id}}" data-gid="{{facet.id}}" value="{{item.value}}"  data-ng-checked="item.selected">
+                              <label data-ng-attr-for="{{item.id}}">{{item.label}}</label>
+                              <i data-ng-if="(item.selected && item.disabled) || item.count">({{item.count}})</i>
+                              <ul class="child-cb-list">
+                                <li  data-ng-repeat="child in item.children"  class="child-cb-item" data-ng-class="{'disabled': child.disabled,'hidden':$index >= facetShowMore && !item.showList}">
+                                  <input data-parentid="{{item.id}}" class="child-cb" type="checkbox" data-ng-click="checkboxMultiLevelChange($event, this, false, child)" data-ng-disabled="child.disabled" name="{{child.id}}" data-ng-attr-id="{{child.id}}" data-gid="{{facet.id}}" value="{{child.value}}"  data-ng-checked="child.selected">
+                                  <label data-ng-attr-for="{{child.id}}">{{child.label}}</label>
+                                  <i data-ng-if="(child.selected && child.disabled) || child.count">({{child.count}})</i>
+                                </li>
+                                <div class="show-more-less-facet" data-ng-if="item.children.length > facetShowMore" >
+                                  <a class="link-icon-wrapper" data-ng-click="filterShowMoreLess(item)">
+                                  <em data-ng-if="!item.showList">Visa mer</em>
+                                  <em data-ng-if="item.showList">Visa mindre</em>
+                                  </a>
+                                </div>
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div    data-ng-attr-id="{{facet.id}}" data-ng-if="facet.id=='DEPARTUREAIRPORTS'">
+                        <h3 class="facet-group">{{facet.label}} <i data-ng-class='{"icon-arrow-down":facet.isExpanded, "icon-arrow-right":!facet.isExpanded}'></i></h3>
+                        <div data-ng-if="facet.filterType=='multi-checkbox'" class="filter-block" data-ng-show="facet.isExpanded">
+                          <ul class="checkbox-list">
+                            <li data-ng-repeat="item in facet.items" data-ng-class="{'disabled': item.disabled, 'hidden':$index >= facetShowMore && !facet.showList}">
+                              <input type="checkbox" data-ng-click="checkboxChange($event, item)" data-ng-disabled="item.disabled" name="{{item.id}}" data-ng-attr-id="{{item.id}}" data-gid="{{facet.id}}" value="{{'item.value'}}"  data-ng-checked="item.selected">
+                              <label for="{{item.id}}">{{item.label}}</label>
+                              <i data-ng-if="(item.selected && item.disabled) || item.count">({{item.count}})</i>
+                            </li>
+                            <div class="show-more-less-facet" data-ng-if="facet.items.length > facetShowMore" >
+                              <a class="link-icon-wrapper" data-ng-click="filterShowMoreLess(facet)">
+                              <em data-ng-if="!facet.showList">Visa mer</em>
+                              <em data-ng-if="facet.showList">Visa mindre</em>
+                              </a>
+                            </div>
+                          </ul>
+                        </div>
+                      </div>
+                      <div   data-ng-attr-id="{{facet.id}}" data-ng-if="facet.id=='DURATION'">
+                        <h3 class="facet-group">{{facet.label}} <i data-ng-class='{"icon-arrow-down":facet.isExpanded, "icon-arrow-right":!facet.isExpanded}'></i></h3>
+                        <div data-ng-if="facet.filterType=='multi-checkbox'" class="filter-block" data-ng-show="facet.isExpanded">
+                          <ul class="checkbox-list">
+                            <li data-ng-repeat="item in facet.items" data-ng-class="{'disabled': item.disabled, 'hidden':$index >= facetShowMore && !facet.showList}">
+                              <input type="checkbox" data-ng-click="checkboxChange($event, item)" data-ng-disabled="item.disabled" name="{{item.id}}" data-ng-attr-id="{{item.id}}" data-gid="{{facet.id}}" value="{{'item.value'}}"  data-ng-checked="item.selected">
+                              <label for="{{item.id}}">{{item.label}}</label>
+                              <i data-ng-if="(item.selected && item.disabled) || item.count">({{item.count}})</i>
+                            </li>
+                            <div class="show-more-less-facet" data-ng-if="facet.items.length > facetShowMore" >
+                              <a class="link-icon-wrapper" data-ng-click="filterShowMoreLess(facet)">
+                              <em data-ng-if="!facet.showList">Visa mer</em>
+                              <em data-ng-if="facet.showList">Visa mindre</em>
+                              </a>
+                            </div>
+                          </ul>
+                        </div>
+                      </div>
+                      <div   data-ng-attr-id="{{facet.id}}" data-ng-if="facet.id=='DEPARTURETIME'">
+                        <h3 class="facet-group">{{facet.label}} <i data-ng-class='{"icon-arrow-down":facet.isExpanded, "icon-arrow-right":!facet.isExpanded}'></i></h3>
+                        <div data-ng-if="facet.filterType=='multi-checkbox'" class="filter-block" data-ng-show="facet.isExpanded">
+                          <ul class="checkbox-list">
+                            <li data-ng-repeat="item in facet.items" data-ng-class="{'disabled': item.disabled, 'hidden':$index >= facetShowMore && !facet.showList}">
+                              <input type="checkbox" data-ng-click="checkboxChange($event, item)" data-ng-disabled="item.disabled" name="{{item.id}}" data-ng-attr-id="{{item.id}}" data-gid="{{facet.id}}" value="{{'item.value'}}"  data-ng-checked="item.selected">
+                              <label for="{{item.id}}">{{item.label}}</label>
+                              <i data-ng-if="(item.selected && item.disabled) || item.count">({{item.count}})</i>
+                            </li>
+                            <div class="show-more-less-facet" data-ng-if="facet.items.length > facetShowMore" >
+                              <a class="link-icon-wrapper" data-ng-click="filterShowMoreLess(facet)">
+                              <em data-ng-if="!facet.showList">Visa mer</em>
+                              <em data-ng-if="facet.showList">Visa mindre</em>
+                              </a>
+                            </div>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                    <li data-ng-if="favFacets && favFacets.position==3" data-ng-attr-id="{{favFacets.id}}" class="top-facet-group selected-filters fav-facet-list" data-max="{{favFacets.maxToShow}}" >
+                      <h3 ng-if="favFacets.items.length">{{favFacets.label}}  <i data-ng-class='{"icon-arrow-down":favFacets.expanded, "icon-arrow-right":!favFacets.expanded}'></i> </h3>
+                      <div ng-if="favFacets.items.length" class="filter-block"  data-ng-show="favFacets.expanded">
+                        <ul>
+                          <li data-ng-repeat="item in favFacets.items">
+                            <input type="checkbox" data-ng-click="checkboxChange($event, item)" data-ng-disabled="item.disabled" name="{{item.id}}" data-ng-attr-id="{{item.id}}" data-gid="{{favFacets.id}}"   data-ng-checked="item.selected">
+                            <label for="{{item.id}}" class="facet-name" title="{{item.label}}">{{item.label}}</label>
+                            <i data-ng-attr-id="selected-{{item.id}}" data-gid="{{item.groupId}}" data-ng-click="removeFavourite($event, item)" class="icon-close-circle"></i>
+                          </li>
+                        </ul>
+                        <div class="show-more-less-fav" ng-if="favFacets.allItems.length > favFacets.maxToShow" >
+                          <a class="link-icon-wrapper" data-ng-click="favShowMoreLess(favFacets)">   
+                          <em data-ng-if="favFacets.showMore">Visa mer</em>
+                          <em data-ng-if="favFacets.showLess">Visa mindre</em>
+                          <i data-ng-class="{'icon-arrow-down':favFacets.showMore, 'icon-arrow-up':favFacets.showLess}"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </aside>
+            </div>
+            <div class="col-md-9">
+              <main>
+                <div class="unspecified-link-container"  data-ng-if="unspecifiedResults && unspecifiedResults.length && !showUnspecifiedUpfront">
+                  <a href='javascript:void(0)' data-ng-click="scrollToUnspecified()" id="show-unspecified-link">
+                    <h3>Visa ospecificerat boende</h3>
+                  </a>
+                </div>
+                <div class="results-container" data-enablecarousel="true" data-currentpagelabelprefix ="Page" >
+                  <article class="list-view" data-ng-if="results.hotels">
+                    <ul id="result-items" >
+                      <li data-ng-repeat="hotel in results.hotels" data-ng-class="{'hidden': hotel.paginationRecord, 'result-item':!hotel.paginationRecord}">
+                        <div class="pageNumber-container" data-ng-if="hotel.currentPageLabel">
+                          <div class="page-label">
+                            <em class="current-page">{{hotel.currentPageLabel}}</em>
+                            <em class="records-range">{{hotel.recordsRange}}</em>
+                          </div>
+                        </div>
+                        <div class="result-item-wrapper" data-ng-if="hotel.code">
+                          <header class="row">
+                            <div class="col-sm-7 col-md-5 image-col">
+                              <div class="list-img">
+                                <div class="carousel-cont" data-carousel-id="{{hotel.code}}">
+                                  <div data-ng-repeat="image in hotel.images" class="carousel-item">
+                                    <img class="lazyload-img" alt="{{image.alt}}" data-ng-src="" data-large="{{image.imgLarge}}"/>
+                                  </div>
+                                </div>
+                                <!-- Info Tool Tip -->
+                                <div class="tool-tip-info" data-ng-if="hotel.conceptClass">
+                                  <div class="container-info">
+                                    <div class="info-icon">
+                                      <strong class="concept-logo {{hotel.conceptClass}}" data-ng-if="!newConceptClass(hotel.conceptClass)"></strong>
+                                      <strong class="label-icon" data-ng-if="newConceptClass(hotel.conceptClass)">{{hotel.conceptClass}}</strong>
+                                      <strong class="icon" data-ng-if="hotel.tooltipFacts"><i class="icon-info"></i></strong>
+                                    </div>
+                                    <div class="info-content">
+                                      <div class="wrapper">
+                                        <h3 data-ng-bind-html="allowHTML(hotel.tooltipHeading)"></h3>
+                                        <div data-ng-bind-html="allowHTML(hotel.tooltipFacts)"></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="rating-block {{hotel.guestRatingClass}}">
+                                  {{hotel.guestRating}} {{hotel.guestRatingText}}
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm-5 col-md-7 hotel-info" data-ng-click="openDetail($event)">
+                              <div class="content-detail">
+                                <h3><a data-ng-href="{{hotel.detailURL}}">{{hotel.name}}</a></h3>
+                                <div class="hotelratingcount" data-hotelrating="{{hotel.hotelRatingNumber}}">{{hotel.hotelRatingNumber}}</div>
+                                <span class="location"><i class="icon-pin"></i> {{hotel.location}}</span>
+                                <div class="hotel-details">
+                                  <div class="hotel-features" data-ng-bind-html="allowHTML(hotel.hotelFacts)"></div>
+                                  <p data-ng-if="hotel.wifi" class="wifi">{{hotel.wifi}}</p>
+                                </div>
+                              </div>
+                              <!-- Code for Right Panel -->
+                              <div class="details usd">
+                                <div class="hotel-cta">
+                                  <div class="price-detail">
+                                    <p>
+                                      <span data-ng-if='searchMetaData.showPriceType=="pp"' class="prices">
+                                      <del data-ng-if='hotel.pricePP'>{{hotel.pricePP}}</del>
+                                      <ins data-ng-class="{'tui-red': hotel.pricePP}">{{hotel.discPP}}</ins>
+                                      <sup>{{hotel.priceType}}</sup>
+                                      </span>
+                                      <span data-ng-if='searchMetaData.showPriceType=="tp"' class="prices">
+                                      <del data-ng-if='hotel.priceTotal'>{{hotel.priceTotal}}</del>
+                                      <ins data-ng-class="{'tui-red': hotel.priceTotal}">{{hotel.discTotal}}</ins>
+                                      </span>
+                                      <!--<span class="price-tag">{{hotel.allInclusive}}</span> -->
+                                      <em data-ng-if='(searchMetaData.showPriceType=="pp" || !searchMetaData.showPriceType)' class="tui-red">{{hotel.stockAvailabilityMessage}}</em>
+                                      <em data-ng-if='(searchMetaData.showPriceType=="tp")' class="tui-red">{{hotel.stockAvailabilityMessage}}</em>
+                                    </p>
+                                    <div class="price-button">
+                                      <span class="price-tag">{{hotel.allInclusive}}</span>
+                                      <a data-ng-href="{{hotel.detailURL}}" class="btn btn-primary">Välj</a>
+                                    </div>
+                                  </div>
+                                  <div class="package-detail" > 
+                                    <em data-value="{{hotel.packageDetailString}}" packagedetail ></em>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </header>
+                        </div>
+                      </li>
+                    </ul>
+                  </article>
+                  <div data-ng-if="searchMetaData.showMore" class="show-more">
+                    <a data-ng-href="" data-ng-click="bindShowMore(searchMetaData.currentPageNumber)" data-service="{{searchMetaData.showMoreService}}" data-post="{{searchMetaData.postdata}}" data-pageNumber={{searchMetaData.currentPageNumber}} data-pageSize={{searchMetaData.pageSize}}>
+                    <span>{{searchMetaData.showMoreLabel}}</span>
+                    <strong class="icon-arrow-down"></strong>
+                    </a>
+                  </div>
+                  
+                </div>
+                <div class="unspecified-container" data-ng-if="unspecifiedResults && unspecifiedResults.length && !searchMetaData.showMore" data-enablecarousel="false">
+                  <h3 class="unspecified-count">{{unspecifiedResults.length}}  Ospecificerat boende</h3>
+                  <article class="list-view" >
+                    <ul id="result-items" >
+                      <li data-ng-repeat="hotel in unspecifiedResults" data-ng-class="{'hidden': hotel.paginationRecord, 'result-item':!hotel.paginationRecord}">
+                        <div class="pageNumber-container" data-ng-if="hotel.currentPageLabel">
+                          <div class="page-label">
+                            <em class="current-page">{{hotel.currentPageLabel}}</em>
+                            <em class="records-range">{{hotel.recordsRange}}</em>
+                          </div>
+                        </div>
+                        <div class="result-item-wrapper" data-ng-if="hotel.code">
+                          <header class="row">
+                            <div class="col-sm-7 col-md-5 image-col">
+                              <div class="list-img">
+                                <div class="carousel-cont" data-carousel-id="{{hotel.code}}">
+                                  <div data-ng-repeat="image in hotel.images" class="carousel-item">
+                                    <img class="lazyload-img" alt="{{image.alt}}" data-ng-src="{{image.imgLarge}}" data-x-small="{{image.imgXSmall}}" data-small="{{image.imgSmall}}" data-medium="{{image.imgMedium}}" data-large="{{image.imgLarge}}"/>
+                                  </div>
+                                </div>
+                                <!-- Info Tool Tip -->
+                                <div class="tool-tip-info">
+                                  <div class="container-info">
+                                    <div class="info-icon">
+                                      <strong class="col-icon new-concept">Ospecificerat boende</strong>
+                                    </div>
+                                    <div class="info-content">
+                                      <div class="wrapper">
+                                        <h3 data-ng-bind-html="allowHTML(hotel.tooltipHeading)"></h3>
+                                        <div data-ng-bind-html="allowHTML(hotel.tooltipFacts)"></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="rating-block {{hotel.guestRatingClass}}">
+                                  {{hotel.guestRating}} {{hotel.guestRatingText}}
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm-5 col-md-7 hotel-info" data-ng-click="openDetail($event)">
+                              <div class="content-detail">
+                                <h3><a data-ng-href="{{hotel.detailURL}}">{{hotel.name}}</a></h3>
+                                <div class="hotelratingcount" data-hotelrating="{{hotel.hotelRatingNumber}}">{{hotel.hotelRatingNumber}}</div>
+                                <span class="location"><i class="icon-pin"></i> {{hotel.location}}</span>
+                                <div class="hotel-details">
+                                  <div class="hotel-features" data-ng-bind-html="allowHTML(hotel.hotelFacts)"></div>
+                                  <p data-ng-if="hotel.wifi" class="wifi">{{hotel.wifi}}</p>
+                                </div>
+                                <span class="read-more"><a data-ng-href="{{hotel.detailURL}}">Läs mer &raquo</a></span>
+                              </div>
+                              <!-- Code for Right Panel -->
+                              <div class="details usd">
+                                <div class="hotel-cta">
+                                  <div class="price-detail">
+                                    <div class="price-package-detail">
+                                      <p>
+                                        <ins class="tui-red">{{hotel.priceTotal}}</ins>
+                                      </p>
+                                      <div class="package-detail" > 
+                                        <em data-value="{{hotel.packageDetailString}}" packagedetail ></em>
+                                      </div>
+                                    </div>
+                                    <div class="price-button">
+                                      <span class="price-tag">{{hotel.allInclusive}}</span>
+                                      <a data-ng-href="{{hotel.detailURL}}" class="btn btn-primary">Välj</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </header>
+                        </div>
+                      </li>
+                    </ul>
+                  </article>
+                </div>
+              </main>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
+    <script src="//assets.tuinordic.com.tuinordic.com/media/assets/js/jquery.all.min.js?version=42"></script>
+    <script src="//assets.tuinordic.com.tuinordic.com/media/assets/js/common.min.js?version=42"></script>
+    <script src="//assets.tuinordic.com.tuinordic.com/media/assets/js/tui-config-prod.js?version=42"></script>
+    <script src="/assets/js/search-result-combined-sit.js?version=42"></script>
+  </body>
+</html>

@@ -1,0 +1,168 @@
+<div class="container" id="shoppingBag">
+	<div id="loading" ng-hide="productsInCart.length"></div>
+	
+	<h1 id="title">Your Shopping Bag <span class="totalItemsMobile visible-xs"><b>{{productsInCart.length}}</b> Items</span></h1>
+	<!-- header -->
+	<header class="container-fluid visible-lg visible-md" id="header">
+		<div class="row">
+			<div class="col-md-2 totalItems"><b>{{productsInCart.length}}</b> Items</div>
+			<div class="col-md-10">
+				<div class="col-md-12">
+					<div class="col-md-8"></div>
+					<div class="col-md-1 size">Size</div>
+					<div class="col-md-2 quantity">Quantity</div>
+					<div class="col-md-1 price">Price</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- /header -->
+	<div class="container-fluid" id="products">
+		<div class="row product" ng-repeat="product in productsInCart">
+			<div class="col-md-2 col-xs-4 image"><img ng-src="img/T{{product.p_id}}.jpg" class="img-responsive" alt="{{product.p_name}}" /></div>
+			<div class="col-md-10 col-xs-8">
+				<div class="col-md-12 pDetailsContainer">
+					<div class="col-md-8 pDetails">
+						<h3 class="pName">{{product.p_variation+' '+product.p_name}}</h3>
+						<p class="pStyle">Style #: {{product.p_style}}</p>
+						<p class="pColor">Color : {{product.p_selected_color.name}}</p>
+						<p class="pSize hidden-md hidden-lg">Size : {{product.p_selected_size.code}}</p>
+						<p class="pQty hidden-md hidden-lg">Qty : <input type="text" ng-model="product.p_quantity" name="quantity" valid-number/></p>
+						<p class="pPrice hidden-md hidden-lg">
+							<s ng-if="product.p_originalprice > product.p_price">
+								<sup>{{product.c_currency}}</sup>{{product.p_originalprice | currency:value=""}}
+							</s>
+							<span>
+								<sup>{{product.c_currency}}</sup>{{product.p_price | currency:value=""}}
+							</span>
+						</p>
+					</div>
+					<div class="col-md-1 size hidden-xs hidden-sm">{{product.p_selected_size.code}}</div>
+					<div class="col-md-2 quantity hidden-xs hidden-sm">
+						<input type="text" ng-model="product.p_quantity" name="quantity" valid-number/>
+					</div>
+					<div class="col-md-1 price hidden-xs hidden-sm">
+						<s ng-if="product.p_originalprice > product.p_price">
+							<sup>{{product.c_currency}}</sup>{{product.p_originalprice | currency:value=""}}
+						</s>
+						<span>
+							<sup>{{product.c_currency}}</sup>{{product.p_price | currency:value=""}}
+						</span>
+					</div>
+				</div>
+				<div class="col-md-12 visible-lg visible-md btnGrp">
+					<div class="col-md-9">
+						<a ng-click="$event.preventDefault(); toggleModal($index)">Edit</a>|
+						<a href="{{product.p_id}}" ng-click="$event.preventDefault(); removeItem($index)">x Remove</a>|
+						<a href="">Save for Later</a>
+					</div>
+				</div>			
+			</div>
+			<div class="col-md-12 visible-xs visible-sm btnGrp external">
+					<div class="col-md-9">
+						<a ng-click="$event.preventDefault(); toggleModal()">Edit</a>|
+						<a href="{{product.p_id}}" ng-click="$event.preventDefault(); removeItem($index)">x Remove</a>|
+						<a href="">Save for Later</a>
+					</div>
+				</div>	
+		</div>
+	</div>
+	
+	<div class="container-fluid" id="cartFooter">
+		<div class="row">
+			<div class="col-md-3 hidden-xs hidden-sm">
+				<p>Need help or have question?</p>
+				<p>Call Customer Service at <a href="tel:1-800-555-5555">1-800-555-5555</a></p>
+				<p><a href="#">Chat With one of our stttlyists</a></p>
+				<p><a href="#">See Return and Exchange Policy</a></p>
+				
+			</div>
+			<div class="col-md-7 col-md-offset-2 col-xs-12 zeroPadding" >
+				<div class="row" id="promoCode">
+					<div class="col-md-5 col-xs-12"><p>ENTER PROMOTION CARD <br/>OR GIFT CARD</p></div>
+					<div class="col-md-7 col-xs-12" id="codeBox"><input type="text"/> <button>Apply</button></div>
+				</div>
+				<div id="cartCalculations">
+					<div class="row" id="subtotal">
+						<div class="col-md-10 col-xs-9">SUBTOTAL</div>
+						<div class="col-md-2 col-xs-3"><sup>$</sup>{{subTotal() | currency:value=""}}</div>
+					</div>
+					<div class="row" id="discount">
+						<div class="col-md-10 col-xs-9">Discount of {{discountP}}%</div>
+						<div class="col-md-2 col-xs-3">-<sup>$</sup>{{discount() | currency:value=""}}</div>
+					</div>
+					
+					<div class="row" id="appliedPromoCode">
+						<div class="col-md-10 col-xs-9">Promotion code <b>JF10</b> Applied</div>
+						<div class="col-md-2 col-xs-3">-<sup>$</sup>{{promoCode | currency:value=""}}</div>
+					</div>
+					<div class="row" id="shipping">
+						<div class="col-md-10 col-xs-9">
+							<p>Estimates Shipping*</p>
+							<p class="hint">You Qualify for free shipping<br/>because your order is over $50*</p>
+						</div>
+						<div class="col-md-2 col-xs-3 smallTxt">Free</div>
+					</div>
+					<div class="row" id="grandTotal">
+						<div class="col-md-10 col-xs-9">
+							<p>Estimated total</p>
+							<p class="hint">Tax will be applied during checkout</p>
+						</div>
+						<div class="col-md-2 col-xs-3 bigTxt"><sup>$</sup>{{total() | currency:value=""}}</div>
+					</div>
+				</div>
+				<div id="checkout">
+					<div class="row">
+						<div class="col-md-12">
+							<a href="" class="underline hidden-xs hidden-sm">
+								CONTINUE SHOPPING
+							</a>
+							<button type="button" class="btn btn-primary col-md-2 col-xs-12 col-sm-12 pull-right" id="checkoutBtn">CHECKOUT</button>
+						</div>						
+						<a href="" class="col-xs-12 col-sm-12 underline visible-xs visible-sm centerTxt" style="margin:1em 0 0 0">CONTINUE SHOPPING</a>
+					</div>
+					<div class="row secure">
+						<div class="col-md-12">
+							<img src="img/lock.jpg" alt="Secure" class="hidden-xs hidden-sm"/><p class="pull-right">Secure Checkout.Shopping is always safe &amp; Secure</p>							
+						</div>	
+						<div class="visible-xs visible-sm col-xs-12 col-sm-12" style="text-align:center">
+							<img src="img/lock.jpg" alt="Secure" />
+						</div>
+					</div>
+				</div>
+				<div id="signIn" class="col-xs-12 col-sm-12 visible-xs visible-sm">
+					<a hre="" class="underline">SIGN IN</a> to save your cart and have acess to your items on mobile,tablet, and desktop.
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	<modal title="" visible="showModal" productsInCart="productsInCart">
+			<div class="row">
+				<div class="col-md-4 col-xs-6">					
+					<h2 class="mName">{{name}}Paisley Jean</h2>
+					<p class="mPrice"><sup>$</sup>21</p>
+					<div class="mColor">
+						<p>PAISLEY</p>
+						<div style="background-color:#F9F9E1"></div>
+						<div class="selected" style="background-color:#9FD599"></div>
+					</div>
+					<div class="mSelect">
+						<select id="selectSize">
+							<option>Size</option>
+						</select>
+						<select id="selectQty">
+							<option>Qty: 1</option>
+						</select>							
+					</div>
+					<button class="btn btn-primary">EDIT</button>
+					<p class="underline"><a href="">See Product Details</a></p>
+				</div>
+				<div class="col-md-8 col-xs-6">
+					<img src="img/P1.jpg" class="img-responsives" alt=""/>
+				</div>
+			</div>
+	</modal>	
+</div>   
+		

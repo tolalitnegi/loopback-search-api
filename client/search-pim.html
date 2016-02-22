@@ -1,0 +1,101 @@
+<!doctype html>
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+    <title>Search PIM</title>
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <link rel="stylesheet" href="//assets.tuinordic.com.tuinordic.com/media/assets/css/style.css?version=42"/>
+    <link rel="stylesheet" href="//assets.tuinordic.com.tuinordic.com/media/assets/css/result-page-main.css?version=42"/>
+    <link rel="shortcut icon" href="//assets.tuinordic.com.tuinordic.com/media/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="//assets.tuinordic.com.tuinordic.com/media/assets/img/favicon.ico" type="image/x-icon">
+    <meta name="application-name" content="Fritidsresor">
+    <style type="text/css">
+      .page-content{
+        margin: 100px 0;
+      }
+      .search-pim-field {
+              font-size: 1.6rem;
+    line-height: 1.25;
+    font-weight: 700;
+    padding: 8px 30px 7px;
+    display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    touch-action: manipulation;
+    cursor: pointer;
+     }
+      .form-control{
+        width: 20%;
+      }
+      .row .destinationcards-list{
+        margin-top: 20px;
+      }
+    </style>
+
+  
+  </head>
+  <body >
+    <section class="page-content">
+    <div class="container">
+      <div class="row">
+       <h3>Accomodation Search via PIM Rest API</h3>
+       <div>
+          <span><input class="search-pim-field form-control" value="" placeholder="Accomodation Id"></span>
+          <span><button class="search-pim-btn btn btn-primary" data-service="/api/TUIRestSearch/getAccomodationDetails">Search</button></span>
+          </div>
+      </div>
+      <div class="row">
+
+
+      <ul class="destinationcards-list row double-margin-bottom">
+      <li class="col-sm-6 col-md-4 destinationcard hidden">
+        <article class="media location">
+          <figure class="media-item">
+            
+              <a href="/resa/turkiet/marmariskusten/pdc-000000355/">
+                <img id="hotel-image" class="object" src="" alt="Marmariskusten">
+              </a>
+            
+            
+          </figure>
+          <div class="media-content-container fixed-height" style="height: 247px;">
+            <header class="media-header zero-padding-bottom">
+              <h1 class="h3 header">
+                <a id="hotel-name-link" href="/resa/turkiet/marmariskusten/pdc-000000355/"></a>
+              </h1>
+            </header>
+            <section class="media-body" style="height: 142px;">
+              <p id="hotel-detail"></p>
+              <span data-href=""></span>
+            </section>
+            <footer class="media-footer">
+              <section class="media-section clearfix">
+                <div class="pull-left">
+                  <a href="/resa/turkiet/marmariskusten/pdc-000000355/#all-hotels-list">
+                  </a>
+                </div>
+                <div class="pull-right text-right">
+                  <a href="/resa/turkiet/marmariskusten/karta/pdc-000000355/"></a>
+                </div>
+              </section>
+            </footer>
+          </div>
+        </article>
+      </li>
+      </ul>
+
+
+
+      </div>
+    </div>
+    </section>
+    <script src="//assets.tuinordic.com.tuinordic.com/media/assets/js/jquery.all.min.js?version=42"></script>
+    <script src="/assets/js/pim.js"></script>
+
+  </body>
+</html>

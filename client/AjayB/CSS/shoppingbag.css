@@ -1,0 +1,357 @@
+@font-face {
+    font-family: rl;
+    src: url(roboto.light.ttf);
+}
+#wrapper{
+	width:98%;
+	margin:auto;
+	background-color:#fff;
+	color:#000;
+	font-family:rl;
+	font-size:1em;
+	border:1px solid #000;
+}
+header{
+	border-bottom:7px solid #f0f0f0;
+}
+header div{
+	display:inline-block;
+	padding:10px 0px;
+}
+.pageheading{
+	width:65%;
+	padding-left:5px;
+}
+.pageheading h1{
+	font-size:125%;
+	font-weight:bold;
+}
+main{
+	margin:0px 0px 20px 0px;
+}
+.cartindicator div{
+	font-size:100%;
+	font-weight:bold;
+}
+.cartindicator{
+	width:30%;
+}
+.txtright{
+	text-align:right;
+}
+.listofitems section {
+	border-bottom:1px solid #f0f0f0;
+	/* width:90%; */
+	margin:auto;
+	height:auto;
+	padding:25px 7px 10px 7px;
+}
+.itemContainer .product{
+	display: -webkit-flex; /* Safari */
+    display: flex;
+}
+.itemContainer .product > div{
+	width:50%;
+	flex:1;
+}
+.previewImg img{
+	width:100%;
+	margin:auto;
+	display:block;
+}
+.prodName{
+	font-weight:bold;
+	font-size:100%;
+	line-height:100%;
+}
+.lighttxt{
+	color:darkgray;
+	font-size:95%;
+	text-transform:capitalize;
+}
+.prod_details{
+	padding-left:7px;
+}
+.prod_details > div{
+	padding:5px 0px;
+}
+.qtybox{
+	border:1px solid #d5d5d5;
+	padding:10px 20px;
+	font-weight:bold;
+}
+.prodQty{
+	margin:25px auto;
+}
+.prodPrice > span{
+	display:inline-block;
+	margin-right:10px;
+}
+.originalPrice{
+	color:#d5d5d5;
+	text-decoration:line-through;
+}
+.price{
+	font-size:125%;
+	font-weight:bold;
+}
+.dollarsign{
+	display:inline-block;
+	position:relative;
+	top:-5px;
+}
+.actionItems{
+	width:98%;
+	margin:25px auto 10px auto;
+	display: -webkit-flex; /* Safari */
+    display: flex;
+	justify-content:space-around;
+}
+.actionItems div{
+	text-align:center;
+	margin:10px 0px;
+	cursor:pointer;
+}
+.edit, .remove{
+	padding-right:15px;
+	border-right:1px solid #d5d5d5;
+}
+.remove span{
+	font-weight:bold;
+	color:#c0c0c0;
+}
+.listofitems{
+	margin:10px auto;
+	border-bottom:7px solid #f0f0f0;
+}
+.promocode{
+	padding:25px 0px;
+	border-bottom:1px solid #d5d5d5;
+}
+.promoheader{
+	text-align:center;
+	width:50%;
+	margin:auto;
+	padding:7px;
+}
+.promobox{
+	width:85%;
+	margin:auto;
+}
+#promotextbox{
+	/* width:200px; */
+	height:50px;
+	border:1px solid #f0f0f0;
+	margin-right:0px 12px;
+	padding:0px 3px;
+	font-size:100%;
+}
+.applybtn{
+	border:1px solid #d5d5d5;
+	padding:15px;
+	cursor:pointer;
+}
+.applybtn:hover{
+	background-color:steelblue;
+	color:#fff;
+}
+.priceShipping{
+	padding:0px 20px;
+}
+.priceShipping .dollarsign{
+	/* font-weight:bold; */
+}
+.unitblock{
+	width:100%;
+	padding:10px 0px;
+}
+.unitblock > div{
+	display:inline-block;
+}
+.unitblock .heading{
+	width:75%;
+	display:inline-block;
+}
+.amount{
+	font-weight:bold;
+	font-size:125%;
+}
+#appliedpromocode{
+	font-weight:bold;
+}
+.free{
+	font-weight:bold;
+}
+.freetext{
+	width:70%;
+	color:#c0c0c0;
+	margin-top:10px;
+}
+.divider{
+	margin:15px auto;
+	border-bottom:1px solid #d5d5d5;
+}
+.checkoutbtn{
+	background-color:steelblue;
+	color:#fff;
+	width:75%;
+	margin:20px auto;
+	text-align:center;
+	padding:15px 0px;
+	font-weight:bold;
+    font-size: 120%;
+	cursor:pointer;
+}
+.continueshop{
+	text-align:center;
+	text-decoration:underline;
+	letter-spacing:1px;
+	margin:20px auto;
+	cursor:pointer;
+}
+.assurancemsg{
+	width:75%;
+	margin:10px auto;
+	text-align:center;
+}
+.key{
+	text-align:center;
+	width:75%;
+	margin:auto;
+	padding-bottom:20px;
+	border-bottom:1px solid #d5d5d5;
+}
+.signinNote div{
+	width:75%;
+	margin:20px auto;
+	text-align:left;
+}
+.signinNote span{
+	color:#c0c0c0;
+	text-decoration:underline;
+	cursor:pointer;
+}
+.uppercase{
+	text-transform:uppercase;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+.ng-modal-overlay {
+  /* A dark translucent div that covers the whole screen */
+  position:fixed;
+  z-index:9999;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:#000000;
+  opacity: 0.8;
+}
+.ng-modal-dialog {
+  /* A centered div above the overlay with a box shadow. */
+  z-index:10000;
+  position: fixed;
+  width: 90%; /* Default */
+
+  /* Center the dialog */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+
+  background-color: #fff;
+  box-shadow: 4px 4px 80px #000;
+}
+.ng-modal-dialog-content {
+  padding:10px;
+  text-align: left;
+}
+.ng-modal-close {
+  position: fixed;
+  top: 3px;
+  right: 3px;
+  padding: 5px 7px;
+  cursor: pointer;
+  font-size: 120%;
+  display: inline-block;
+  /* font-weight: bold; */
+  font-family: 'arial', 'sans-serif';
+}
+.ng-modal-close:hover{
+	background-color:red;
+	color:#fff;
+}
+/**/
+#overlay{
+	width:90%;
+	margin:auto;
+	padding:10px 0px;
+}
+.image img{
+	display:block;
+	margin:auto;
+}
+.p_name{
+    width: 90%;
+    border-top: 7px solid #d5d5d5;
+    margin: 5px auto;
+    text-align: center;
+    padding: 10px 0px;
+}
+.p_price{
+	width: 90%;
+	margin: 5px auto;
+	text-align: center;
+}
+.p_colors{
+	text-align:center;
+}
+.p_colors span{
+	width:20px;
+	height:20px;
+	margin:7px;
+	display:inline-block;
+	border:1px solid #c0c0c0;
+}

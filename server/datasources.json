@@ -1,0 +1,261 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "TUIHybrisRestDS": {
+    "name": "TUIHybrisRestDS",
+    "connector": "rest",
+    "saurabhbehl":"http://10.203.24.27:9001/",
+    "nordicsit":"fritidsresor.se.tuinordic.com",
+    "operations": [
+      {
+        "template": {
+          "method": "POST",
+          "url": "http://10.203.24.27:9001/view/SearchPanelComponentController/airportRequest",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "fetchAirports": [
+            "postJSON"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "POST",
+          "url": "http://10.203.24.27:9001/view/AllDestinationsController/getAllDestinations",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component",
+            "version":3
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "fetchAllDestinations": [
+            "postJSON"
+          ]
+        }
+      },
+       {
+        "template": {
+          "method": "POST",
+          "url": "http://10.203.24.27:9001/view/SearchPanelComponentController/getWhereToAutoSuggestData",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "findDestinations": [
+            "postJSON"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "POST",
+          "url": "http://10.203.24.27:9001/view/SearchPanelComponentController/getCalendarInfo",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "getCalendarData": [
+            "postJSON"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "POST",
+          "url": "http://10.203.24.27:9001/view/SearchPanelComponentController/getPartySizeInfo",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "getSeatsAndRooms": [
+            "postJSON"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "POST",
+          "url": "http://10.203.24.27:9001/view/getResultList",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component",
+            "searchInitiator":"search",
+            "viewEdit": "true|cmp_searchpanel_component"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "checkResults": [
+            "postJSON"
+          ]
+        }
+      },
+       {
+        "template": {
+          "method": "GET",
+          "url": "http://10.203.24.27:9001/searchResult",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "searchdata":"{searchdata}",
+            "searchInitiator":"search",
+            "viewEdit": "true|cmp_searchpanel_component"
+          }
+        },
+        "functions": {
+          "fetchResults": [
+            "searchdata"
+          ]
+        }
+      }, {
+        "template": {
+          "method": "POST",
+          "url": "http://10.203.24.27:9001/view/SearchListViewComponentController/processShowMoreRequest",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_search_listview"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "getChangedResults": [
+            "postJSON"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "POST",
+          "url": "http://10.203.24.27:9001/view/SearchListComponentRestControllerTest/getResultListTest",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component",
+            "searchInitiator":"search",
+            "serachPannelcomponentUid":"cmp_search_listview",
+            "viewEdit": "true|cmp_searchpanel_component"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "getResultsData": [
+            "postJSON"
+          ]
+        }
+      },
+            {
+        "template": {
+          "method": "POST",
+          "url": "http://10.203.24.27:9001/view/SearchListComponentRestControllerTest/getResultListTest",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component",
+            "searchInitiator":"search",
+            "serachPannelcomponentUid":"cmp_search_listview",
+            "viewEdit": "true|cmp_searchpanel_component"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "getResultsData": [
+            "postJSON"
+          ]
+        }
+      },  {
+        "template": {
+          "method": "POST",
+          "url": "http://10.203.24.27:9001/view/SearchListComponentRestControllerTest/filterSearchResults",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "componentUid": "cmp_searchpanel_component",
+            "searchInitiator":"search",
+            "serachPannelcomponentUid":"cmp_searchpanel_component",
+            "serachListViewcomponentUid":"cmp_search_listview",
+            "viewEdit": "true|cmp_searchpanel_component"
+          },
+          "body": "{postJSON}",
+          "json": true
+        },
+        "functions": {
+          "filterSearchResultsFromHybris": [
+            "postJSON"
+          ]
+        }
+      },
+       {
+        "template": {
+          "method": "GET",
+          "url": "http://10.203.100.64:8081/JerseyJSONExample/rest/jsonServices/print/{accomodationid}",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+          "getAccomDetails": [
+            "accomodationid"
+          ]
+        }
+      }
+
+    ]
+  }
+}
